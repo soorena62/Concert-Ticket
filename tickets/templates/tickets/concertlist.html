@@ -1,23 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <heaad>
-        <title>Application Concert Ticket Selling</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/style.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/fonteawesome.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/bootstrap.css' %}">
-    </head>
-    <body>
-         <h1>Concert Lists:</h1>
-        <ul>
-            {% if concertlist %}
-            <p>Number Of Concerts Available: {{ concertcount }}</p>
-                {% for concert in concertlist %}
-                    <li>
+{% extends "tickets/base.html" %}
+
+{% block titlepage %}
+    Concert Lists:
+{% endblock %}
+
+{% block maincontent %}
+    {% if concertlist %}
+        {% for concert in concertlist %}
+            <div class="col-md-2">
+                <a href='/tickets/concert/{{ concert.id }}'>
+                    <div class="imagebox">
+                        <img src="{{ concert.poster.url }}">
                         {{ concert }}
-                    </li>
-                {% endfor %}
-            {% endif %}
-        </ul>
-    </body>
-</html>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
