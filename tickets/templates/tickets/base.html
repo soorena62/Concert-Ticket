@@ -1,8 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
     <heaad>
-        <title>Application Concert Ticket Selling</title>
+        <title>سامانه فروش بلیط کنسرت</title>
         <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/bootstrap.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/fontawesome.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'tickets/css/style.css' %}">
@@ -11,13 +11,14 @@
         <div class="container">
             <div class="row box">
                 
-                <h1>{% block titlepage %}{% endblock %}</h1>
+                <h1>{% block titlepage %} {% endblock %}</h1>
                 <ul class="btnul">
-                    <li><a class="btn btn-success">Profile</li>
-                    <li><a class="btn btn-primary">Main Page</li>
-                    <li><a class="btn btn-danger" href="/tickets/location/list">Place Info</a></li>
+                    <li><a class="btn btn-success">پروفایل</li>
+                    <li><a class="btn btn-primary">صفحه اصلی</li>
+                    <li><a class="btn btn-danger" href="/tickets/location/list">اطلاعات محل</a></li>
                 </ul>
             </div>
+            
             <div class="row">
 
                 {% block maincontent %}{% endblock %} 

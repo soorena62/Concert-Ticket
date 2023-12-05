@@ -19,13 +19,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 from config import settings
-from tickets.views import concert_detailsview, concertlistview, locationlistview
+from tickets.views import concert_detailsview, concertlistview, locationlistview, timelistview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tickets/concert/list/', concertlistview),
     path('tickets/location/list/', locationlistview),
     path('tickets/concert/<int:concert_id>', concert_detailsview),
+    path('tickets/time/list/', timelistview),
+
 ]
 
 if settings.DEBUG:
