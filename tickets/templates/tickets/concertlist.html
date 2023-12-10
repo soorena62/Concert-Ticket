@@ -5,13 +5,21 @@
 {% endblock %}
 
 {% block maincontent %}
+
     {% if concertlist %}
+
         {% for concert in concertlist %}
-            <div class="col-md-2">
+
+            <div class="col-md-3">
+
                 <a href='/tickets/concert/{{ concert.id }}'>
+
                     <div class="imagebox">
+
                         <img src="{{ concert.poster.url }}">
+
                         {{ concert }}
+
                     </div>
                 </a>
             </div>

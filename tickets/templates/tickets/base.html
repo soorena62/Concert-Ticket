@@ -13,9 +13,22 @@
                 
                 <h1>{% block titlepage %} {% endblock %}</h1>
                 <ul class="btnul">
-                    <li><a class="btn btn-success">پروفایل</li>
-                    <li><a class="btn btn-primary">صفحه اصلی</li>
+
+                    {% if user.is_authenticated %}
+                        <li><a class="btn btn-success" href="/accounts/profile">پروفایل</a></li>
+                        <li><a class="btn btn-danger" href="/accounts/logout">خروج</a></li>
+
+                    {% else %}
+                        <li><a class="btn btn-success" href="/accounts/login">ورود</a></li>
+                        <li><a class="btn btn-danger" href="/accounts/profileRegister">ثبت نام</a></li>
+                    {% endif %}
+                   
+                   
+                    
+                    <li><a class="btn btn-primary" href="/tickets/time/list">مشاهده سانس های کنسرت</a></li>
+                    <li><a class="btn default" href="/tickets/concert/list">صفحه اصلی</a></li>
                     <li><a class="btn btn-danger" href="/tickets/location/list">اطلاعات محل</a></li>
+                    
                 </ul>
             </div>
             
