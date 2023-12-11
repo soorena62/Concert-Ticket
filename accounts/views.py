@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 import tickets
 # Create your views here:
@@ -10,7 +11,7 @@ import tickets
 
 def loginview(request):
     # POST:
-    if request.method == "post":
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request,username=username, password=password)
@@ -36,3 +37,13 @@ def loginview(request):
 def logoutview(request):
     logout(request)
     return HttpResponseRedirect(reverse(tickets.views.concertlistview))
+
+
+@login_required
+def profileview(request):
+    profile = request.user.profile
+
+    context = {
+        "profile":profile,
+    }
+    return render(request, 'accounts/profile.html', context)

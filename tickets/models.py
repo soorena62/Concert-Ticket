@@ -1,5 +1,6 @@
 from django.db import models
 from jalali_date import datetime2jalali, date2jalali
+from accounts.models import Profile
 # Create your models here:
 
 
@@ -60,26 +61,8 @@ class Time(models.Model):
         return datetime2jalali(self.start)
 
 
-class Profile(models.Model):
-    first_name = models.CharField(max_length=50, verbose_name="نام")
-    last_name = models.CharField(max_length=50, verbose_name="نام خانوادگی")
-    profile_image = models.ImageField(upload_to="ProfileImages/", null=True, verbose_name="عکس")
-
-    class Meta:
-        verbose_name = "کاربر"
-        verbose_name_plural = "کاربر"
-
-    Man = 1
-    Woman = 2
-    status_choices = (("Man", "مرد"),("Woman", "زن"))
-    gender = models.IntegerField(choices=status_choices, verbose_name="جنسیت")
-
-    def __str__(self):
-        return "FullName: {} {}".format(Profile.first_name, Profile.last_name)
-    
-
 class Ticket(models.Model):
-    profile = models.ForeignKey(to=Profile, on_delete=models.PROTECT, verbose_name="کاربر")
+    profile = models.ForeignKey(Profile, on_delete=models.PROTECT, verbose_name="کاربر")
     time = models.ForeignKey("Time", on_delete=models.PROTECT, verbose_name="سانس")
     name = models.CharField(max_length=100, verbose_name="عنوان")
     price = models.IntegerField(verbose_name="مبلغ")

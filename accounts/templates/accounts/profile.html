@@ -10,15 +10,15 @@
             <div class="col-md-9">
                 <div >
                     <p class="border"> <span class="title">نام و نام خانوادگی: </span> {{ profile.user.get_full_name }} </p>
-                    <p class="border"> <span class="title">جنسیت: </span> {{ profile.get_Gender_display }}</p>
-                    <p class="border"><span class="title">مقدار اعتبار: </span> {{ profile.Credit }}</p>
+                    <p class="border"> <span class="title">جنسیت: </span> {{ profile.get_gender_display }}</p>
+                    <p class="border"><span class="title">مقدار اعتبار: </span> {{ profile.credit }}</p>
                     <ul class="btnul">
-                        <li><a class="btn btn-primary" href="/accounts/profileEdit"> ویرایش پروفایل</a></li>
+                        <li><a class="btn btn-primary" href="/accounts/edit-profile"> ویرایش پروفایل</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-3" dir="ltr">
-                    <img src="{{ profile.ProfileImage.url }}" style="width:100%;height:auto">
+                    <img src="{{ profile.profile_image.url }}" style="width:100%;height:auto">
             </div>
       
     </div>

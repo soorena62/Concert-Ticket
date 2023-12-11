@@ -7,10 +7,15 @@
 {% block maincontent %}
 
     {% if concertlist %}
-
+        
+        <form action="" method="GET">
+            {{ searchform }}
+            <button type="submit" class="btn btn-success">جستجو</button>
+        </form>
+        
         {% for concert in concertlist %}
-
-            <div class="col-md-3">
+            
+            <div class="col-md-2">
 
                 <a href='/tickets/concert/{{ concert.id }}'>
 
