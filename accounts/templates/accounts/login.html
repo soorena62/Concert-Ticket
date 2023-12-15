@@ -1,16 +1,15 @@
 {% extends "tickets/base.html" %}
 
-{% block titlepage %} 
-    ورود کاربران
-{% endblock%}
+{% block titlepage %}
+    ورود کاربران 
+{% endblock %}
 
-{% block mainContent %}
+{% block maincontent %}
 
 <div class="col-md-3"></div>
-
 <div class="col-md-6">
 
-<form action="" method="POST" class="form">
+<form action="" method="post" class="form">
     {% csrf_token %}
     <h3>اطلاعات کاربری خود را وارد نمایید</h2>
     <label class="lable-control">نام کاربری:</label>
@@ -25,4 +24,4 @@
 
 <div class="col-md-3"></div>
 
-{% endblock%}
+{% endblock %}

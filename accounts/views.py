@@ -10,28 +10,27 @@ import tickets
 
 
 def loginview(request):
-    # POST:
-    if request.method == "POST":
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request,username=username, password=password)
+    #Post
+    if request.method=='POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+        user=authenticate(request,username=username,password=password)
 
         if user is not None:
-            login(request, user)
+            login(request,user)
             if request.GET.get('next'):
-                return HttpResponseRedirect(request.GET.get('next'))
-            
+                return HttpResponseRedirect(request.GET.get("next"))
+                
             return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
-        
         else:
             context={
-                'username':username,
-                'ErrorMessage':"کاربری با این مشخصات یافت نشد"
+                "username":username,
+                "errorMessage":"کاربری با این مشخصات یافت نشد"
             }
-            return render(request, 'accounts/login.html',context)
+            return render(request, "accounts/login.html",context)
+     #Get
     else:
-        #GET        
-        return render(request, 'accounts/login.html', {})
+        return render(request, "accounts/login.html",{})
 
 
 def logoutview(request):
@@ -44,6 +43,7 @@ def profileview(request):
     profile = request.user.profile
 
     context = {
-        "profile":profile,
+        "profile":profile
     }
     return render(request, 'accounts/profile.html', context)
+
