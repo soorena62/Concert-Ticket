@@ -2,30 +2,14 @@
 
 {% block titlepage %} 
     ویرایش کنسرت 
-{% endblock%}
+{% endblock %}
 
 {% block mainContent %}
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="POST">
         {% csrf_token %}
-        <{{ concertForm }}>
-        <div class="mainborder">
-            <div class="row">
-                <div class="col-md-6">
-                    <p class="mylable">Name: {{ concertForm.Name }}</p>
-                    <p class="mylable">SingerName: {{ concertForm.singer }}</p>
-                    <p class="mylable">lenght: {{ concertForm.lenght }}</p>
-                </div>
-                <div  class="col-md-6">
-                   <div class="imageBox">
-                       <img src="{{ PosterImage.url }}">
-                   </div>
-                    {{ concertForm.Poster }}
-                </div>
-            </div>
-        </div>
-        <div class="bottonborder">
-            <button type="submit" class="btn btn-success">ذخیره</button>
-        </div>
+        {{ concertform }}
+        
+        <button type="submit" class="btn btn-success">ذخیره</button>
+        
     </form>
-{% endblock%}
-               
+{% endblock %}

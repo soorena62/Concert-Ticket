@@ -3,7 +3,7 @@ from django.urls import path
 from tickets import views
 
 from tickets.views import concert_detailsview, concertlistview,\
-                        locationlistview, timeview
+                        concert_edit_view,locationlistview, timeview
 
 
 
@@ -13,5 +13,6 @@ urlpatterns = [
     path('location/list/', views.locationlistview),
     path('concert/<int:concert_id>', views.concert_detailsview),
     path('time/list/', views.timeview),
+    path('concertedit/<int:concert_id>', views.concert_edit_view),
     
 ]

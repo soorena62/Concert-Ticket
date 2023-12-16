@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse
 import accounts
+import tickets
 from tickets.models import Concert, Location, Time
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from tickets.forms import SearchForm
+from tickets.forms import ConcertForm, SearchForm
 # Create your views here:
 
 
@@ -23,6 +24,7 @@ def concertlistview(request):
     }
         
     return render(request, "tickets/concertlist.html", context)
+
 
 @login_required
 def locationlistview(request):
@@ -54,8 +56,25 @@ def timeview(request):
             "timelist":times,
         }
 
-        return render(request,"tickets/timelist.html",context)
+        return render(request, "tickets/timelist.html", context)
 
     # else:
     #     return HttpResponseRedirect(reverse(accounts.views.loginView))
-    
+
+
+def concert_edit_view(request, concert_id):
+    concert=Concert.objects.get(pk=concert_id)
+    if request.method == 'POST':
+        concertform = ConcertForm(request.POST, request.FILES, instance=concert)
+        if concertform.is_valid:
+            concertform.save()
+            return HttpResponseRedirect(reverse(tickets.views.concertlistview))
+    else:
+        concertform = ConcertForm(instance=concert)
+
+    context={
+
+            "concertform":concertform,
+            "PosterImage":concert.poster
+        }
+    return render(request,"tickets/editconcert.html",context)
